@@ -1,0 +1,8 @@
+{
+    "liveServer.settings.port": 5501,
+    "java.project.sourcePaths": [
+        "proxy-server/src/main/java"
+    ],
+    "java.configuration.updateBuildConfiguration": "interactive",
+    "java.compile.nullAnalysis.mode": "automatic"
+}

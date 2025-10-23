@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Formulário Processos</title>
+
+  <!-- base -->
+  <link rel="stylesheet" href="assets/css/reset.css">
+  <link rel="stylesheet" href="assets/css/sidebar.css">
+  <link rel="stylesheet" href="assets/css/forms.css">
+</head>
+<body>
+  <!-- Sidebar (ordem fixa; ativo em “Formulário processos”) -->
+  <aside class="sidebar">
+    <div class="logo-block">LOGO</div>
+    <nav class="menu">
+      <a href="profile.html"   class="menu-item">
+        <img src="assets/img/icons/usuario.svg" alt=""><span class="menu-label">Informações pessoais</span>
+      </a>
+      <a href="shipping.html"  class="menu-item">
+        <img src="assets/img/icons/caminhao.svg" alt=""><span class="menu-label">Shipping</span>
+      </a>
+      <a href="forms.html"     class="menu-item is-active">
+        <img src="assets/img/icons/documento.svg" alt=""><span class="menu-label">Formulário processos</span>
+      </a>
+      <a href="#"              class="menu-item">
+        <img src="assets/img/icons/tetris.svg" alt=""><span class="menu-label">Quadro processos</span>
+      </a>
+      <a href="#"              class="menu-item">
+        <img src="assets/img/icons/pasta.svg" alt=""><span class="menu-label">Repositório</span>
+      </a>
+      <a href="#"              class="menu-item">
+        <img src="assets/img/icons/caixa.svg" alt=""><span class="menu-label">Rastreamento</span>
+      </a>
+      <a href="#"              class="menu-item">
+        <img src="assets/img/icons/cadeado.svg" alt=""><span class="menu-label">Acesso</span>
+      </a>
+      <a href="#"              class="menu-item">
+        <img src="assets/img/icons/comentario.svg" alt=""><span class="menu-label">Chat</span>
+      </a>
+
+      <a href="#" class="menu-exit">
+        <img src="assets/img/icons/sair.svg" alt=""><span class="menu-label">Sair</span>
+      </a>
+    </nav>
+  </aside>
+
+  <!-- Conteúdo -->
+  <main class="page-with-sidebar">
+    <section class="panel">
+      <h1 class="title">FORMULÁRIO PROCESSOS</h1>
+
+      <form id="procForm" class="form" autocomplete="off" novalidate>
+        <!-- Título -->
+        <div class="field">
+          <label class="label" for="titulo">Título</label>
+          <input id="titulo" class="input" type="text" placeholder="Value">
+        </div>
+
+        <!-- Tipo: Exportação / Importação (dots) -->
+        <div class="field">
+          <span class="label">Tipo</span>
+          <div class="dot-group" role="radiogroup" aria-label="Tipo">
+            <label class="dot">
+              <input type="radio" name="tipo" value="exportacao" checked>
+              <span aria-hidden="true"></span>
+              <em>Exportação</em>
+            </label>
+            <label class="dot">
+              <input type="radio" name="tipo" value="importacao">
+              <span aria-hidden="true"></span>
+              <em>Importação</em>
+            </label>
+          </div>
+        </div>
+
+        <!-- Modal: Marítmo / Aéreo (dots) -->
+        <div class="field">
+          <span class="label">Modal</span>
+          <div class="dot-group" role="radiogroup" aria-label="Modal">
+            <label class="dot">
+              <input type="radio" name="modal" value="aereo" checked>
+              <span aria-hidden="true"></span>
+              <em>Aéreo</em>
+            </label>
+            <label class="dot">
+              <input type="radio" name="modal" value="maritmo">
+              <span aria-hidden="true"></span>
+              <em>Marítmo</em>
+            </label>
+          </div>
+        </div>
+
+        <!-- Observação -->
+        <div class="field">
+          <label class="label" for="obs">Observação</label>
+          <input id="obs" class="input" type="text" placeholder="Value">
+        </div>
+
+        <!-- Anexar arquivos -->
+        <div class="field">
+          <label class="label" for="anexo">Anexar arquivos</label>
+          <label class="filebox">
+            <input id="anexo" type="file" multiple>
+            <span class="paperclip" aria-hidden="true">📎</span>
+            <span id="fileText" class="filetext"> </span>
+          </label>
+        </div>
+
+        <!-- Botão -->
+        <div class="actions">
+          <button type="submit" class="btn">Enviar</button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <script src="assets/js/forms.js"></script>
+</body>
+</html>

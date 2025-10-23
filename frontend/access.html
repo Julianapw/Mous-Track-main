@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Acesso</title>
+
+  <!-- estilos base e da sidebar, os mesmos já usados no projeto -->
+  <link rel="stylesheet" href="assets/css/reset.css">
+  <link rel="stylesheet" href="assets/css/sidebar.css">
+  <!-- estilo desta tela -->
+  <link rel="stylesheet" href="assets/css/access.css">
+</head>
+<body>
+  <!-- Sidebar padrão -->
+  <aside class="sidebar">
+    <div class="logo-block">LOGO</div>
+    <nav class="menu">
+      <a href="profile.html"     class="menu-item"><img src="assets/img/icons/usuario.svg" alt=""><span class="menu-label">Informações pessoais</span></a>
+      <a href="shipping.html"    class="menu-item"><img src="assets/img/icons/caminhao.svg" alt=""><span class="menu-label">Shipping</span></a>
+      <a href="forms.html"       class="menu-item"><img src="assets/img/icons/documento.svg" alt=""><span class="menu-label">Formulário processos</span></a>
+      <a href="board.html"       class="menu-item"><img src="assets/img/icons/tetris.svg" alt=""><span class="menu-label">Quadro processos</span></a>
+      <a href="repository.html"  class="menu-item"><img src="assets/img/icons/pasta.svg" alt=""><span class="menu-label">Repositório</span></a>
+      <a href="tracking.html"    class="menu-item"><img src="assets/img/icons/caixa.svg" alt=""><span class="menu-label">Rastreamento</span></a>
+      <a href="access.html"      class="menu-item is-active"><img src="assets/img/icons/cadeado.svg" alt=""><span class="menu-label">Acesso</span></a>
+      <a href="chat.html"        class="menu-item"><img src="assets/img/icons/comentario.svg" alt=""><span class="menu-label">Chat</span></a>
+      <a href="#"                class="menu-exit"><img src="assets/img/icons/sair.svg" alt=""><span class="menu-label">Sair</span></a>
+    </nav>
+  </aside>
+
+  <main class="page-with-sidebar">
+    <header class="acc-header">
+      <h1>ACESSO</h1>
+    </header>
+
+    <section class="acc-body">
+      <form id="accForm" class="access-form" autocomplete="off" novalidate>
+        <!-- Nome -->
+        <div class="field">
+          <label for="accName" class="label">Nome Completo</label>
+          <input id="accName" type="text" class="input" placeholder="Value" required>
+        </div>
+
+        <!-- Email -->
+        <div class="field">
+          <label for="accEmail" class="label">Email</label>
+          <input id="accEmail" type="email" class="input" placeholder="Value" required>
+        </div>
+
+        <!-- Senha + Gerar -->
+        <div class="field field-inline">
+          <div class="field-col">
+            <label for="accPass" class="label">Senha</label>
+            <input id="accPass" type="text" class="input" placeholder="Value" required>
+          </div>
+          <button type="button" id="btnGenPass" class="btn small">Gerar</button>
+        </div>
+
+        <!-- Cliente -->
+        <div class="field">
+          <label for="accClient" class="label">Cliente</label>
+          <select id="accClient" class="input select" required>
+            <!-- opções inseridas via JS -->
+          </select>
+        </div>
+
+        <!-- Feedback -->
+        <div id="accFeedback" class="feedback" aria-live="polite"></div>
+
+        <!-- Enviar -->
+        <div class="actions">
+          <button type="submit" class="btn primary wide">Enviar</button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <script src="assets/js/access.js"></script>
+</body>
+</html>

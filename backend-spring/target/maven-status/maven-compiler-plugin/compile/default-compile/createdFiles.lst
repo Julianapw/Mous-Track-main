@@ -1,0 +1,14 @@
+com\comexapp\model\Usuario.class
+com\comexapp\repository\ClienteRepository.class
+com\comexapp\repository\UsuarioRepository.class
+com\comexapp\controller\UserController.class
+com\comexapp\controller\ClienteController.class
+com\comexapp\Application.class
+com\comexapp\controller\AuthController.class
+com\comexapp\service\AuthService.class
+com\comexapp\model\Cliente.class
+com\comexapp\model\TipoUsuario.class
+com\comexapp\DTO\AtualizarPerfilDTO.class
+com\comexapp\controller\TesteController.class
+com\comexapp\config\DataLoader.class
+com\comexapp\service\UsuarioService.class

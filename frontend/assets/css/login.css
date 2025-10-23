@@ -1,0 +1,91 @@
+:root {
+  --bg: #5F7F76;
+  --input-bg: #FFFFFF;
+  --input-bd: #DADADA;
+  --text: #FFFFFF;
+  --btn-bg: #2E4E45;
+  --btn-bg-hover: #2A4740;
+  --radius: 6px;
+  --w-form: 540px;
+}
+
+.screen {
+  min-height: 100dvh;
+  background: var(--bg);
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: var(--text);
+}
+
+.login {
+  width: 100%;
+  max-width: var(--w-form);
+}
+
+/* LOGO DA EMPRESA */
+.logo-img {
+  width: 559px;
+  height: 375px;
+  flex-shrink: 0;
+  aspect-ratio: 559 / 375;
+  background: url('../../img/icons/logo.png') lightgray 50% / cover no-repeat;
+  margin: 0 auto 24px auto; /* centraliza e dá espaçamento */
+  border-radius: var(--radius);
+}
+
+/* FORMULÁRIO */
+#loginForm {
+  display: grid;
+  gap: 14px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 600;
+  margin-left: 6px;
+}
+
+.input {
+  height: 36px;
+  background: var(--input-bg);
+  border: 1px solid var(--input-bd);
+  border-radius: var(--radius);
+  padding: 0 12px;
+  outline: none;
+}
+
+.input:focus {
+  border-color: #9ec7bc;
+  box-shadow: 0 0 0 3px rgba(158, 199, 188, .25);
+}
+
+.btn {
+  margin-top: 8px;
+  height: 36px;
+  background: var(--btn-bg);
+  color: #fff;
+  border: 0;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.btn:hover {
+  background: var(--btn-bg-hover);
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 600px) {
+  :root {
+    --w-form: 92vw;
+  }
+
+  .logo-img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 559 / 375;
+  }
+}

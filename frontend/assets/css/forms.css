@@ -1,0 +1,101 @@
+:root{
+  --page-bg:#E8EFED;
+  --panel-bg:#E3EAE7;     /* tom suave do card */
+  --input-bg:#fff;
+  --input-bd:#D2DBD7;
+  --btn-bg:#2E4E45;
+  --btn-bg-hover:#29473F;
+  --txt:#0E0E0E;
+  --radius:6px;
+
+  --panel-w: 720px;       /* largura do conteúdo central como no Figma */
+}
+
+body{
+  background:var(--page-bg);
+  color:var(--txt);
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  margin:0;
+}
+
+/* card central */
+.panel{
+  max-width:var(--panel-w);
+  margin:32px auto;
+  background:var(--panel-bg);
+  border-radius:10px;
+  padding:28px 28px 32px;
+}
+.title{
+  text-align:center;
+  font-size:18px;
+  font-weight:700;
+  letter-spacing:.4px;
+  margin:6px 0 18px;
+}
+
+/* formulário em coluna, com respiro grande entre blocos */
+.form{ display:grid; gap:18px; }
+
+/* campo padrão */
+.field{ display:grid; gap:6px; }
+.label{ font-size:12px; font-weight:600; margin-left:4px; }
+.input{
+  height:36px;
+  background:var(--input-bg);
+  border:1px solid var(--input-bd);
+  border-radius:var(--radius);
+  padding:0 12px;
+  outline:none;
+}
+.input:focus{ border-color:#9fc5b9; box-shadow:0 0 0 3px rgba(159,197,185,.25); }
+
+/* ===== dots Exportação/Importação (iguais aos que usamos no Shipping) ===== */
+.dot-group{ display:flex; gap:20px; align-items:center; }
+.dot{
+  display:inline-flex; align-items:center; gap:8px;
+  cursor:pointer; user-select:none; height:36px;
+}
+.dot input{ appearance:none; position:absolute; opacity:0; }
+.dot span{
+  width:16px; height:16px; border:2px solid #7ea59a; border-radius:50%;
+  display:inline-block; position:relative;
+}
+
+.dot input:checked + span::after {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  background: #2E4E45;
+  border-radius: 50%;
+}
+
+/* O JavaScript precisa estar ajustado (com a lógica de updateDotSelection) */
+
+.dot em{ font-style:normal; font-size:12px; }
+/* ===== file input estilizado ===== */
+.filebox{
+  height:36px; display:flex; align-items:center; gap:10px;
+  background:#fff; border:1px solid var(--input-bd); border-radius:var(--radius);
+  padding:0 10px; position:relative; overflow:hidden;
+}
+.filebox input[type="file"]{
+  position:absolute; inset:0; opacity:0; cursor:pointer;
+}
+.paperclip{ font-size:16px; line-height:1; }
+.filetext{ font-size:12px; color:#6d7b76; }
+
+/* ===== botão ===== */
+.actions{ margin-top:4px; }
+.btn{
+  width:420px; height:36px; display:block; margin:0 auto;
+  background:var(--btn-bg); color:#fff; border:0; border-radius:var(--radius);
+  font-weight:600; cursor:pointer;
+}
+.btn:hover{ background:var(--btn-bg-hover); }
+
+/* responsivo */
+@media (max-width:780px){
+  :root{ --panel-w:92vw; }
+  .btn{ width:100%; }
+}

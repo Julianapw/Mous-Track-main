@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shipping</title>
+
+  <link rel="stylesheet" href="assets/css/reset.css">
+  <link rel="stylesheet" href="assets/css/sidebar.css">
+  <link rel="stylesheet" href="assets/css/shipping.css">
+</head>
+<body>
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="logo-block">LOGO</div>
+    <nav class="menu">
+      <a href="profile.html" class="menu-item">
+        <img src="assets/img/icons/usuario.svg" alt="">
+        <span class="menu-label">Informações pessoais</span>
+      </a>
+      <a href="shipping.html" class="menu-item is-active">
+        <img src="assets/img/icons/caminhao.svg" alt="">
+        <span class="menu-label">Shipping</span>
+      </a>
+      <a href="#" class="menu-item">
+        <img src="assets/img/icons/documento.svg" alt="">
+        <span class="menu-label">Formulário processos</span>
+      </a>
+      <a href="#" class="menu-item">
+        <img src="assets/img/icons/tetris.svg" alt="">
+        <span class="menu-label">Quadro processos</span>
+      </a>
+      <a href="#" class="menu-item">
+        <img src="assets/img/icons/pasta.svg" alt="">
+        <span class="menu-label">Repositório</span>
+      </a>
+      <a href="#" class="menu-item">
+        <img src="assets/img/icons/caixa.svg" alt="">
+        <span class="menu-label">Rastreamento</span>
+      </a>
+      <a href="#" class="menu-item">
+        <img src="assets/img/icons/cadeado.svg" alt="">
+        <span class="menu-label">Acesso</span>
+      </a>
+      <a href="#" class="menu-item">
+        <img src="assets/img/icons/comentario.svg" alt="">
+        <span class="menu-label">Chat</span>
+      </a>
+
+      <a href="#" class="menu-exit">
+        <img src="assets/img/icons/sair.svg" alt="">
+        <span class="menu-label">Sair</span>
+      </a>
+    </nav>
+  </aside>
+
+  <!-- Conteúdo -->
+  <main class="page-with-sidebar">
+    <section class="form-section">
+      <h1 class="title">SHIPPING INSTRUCTION</h1>
+
+      <!-- Botão de alternância -->
+      <div class="header-right">
+        <div class="type-switch">
+          <button id="modalBtn" class="type-btn">
+            <span id="modalLabel">Aéreo</span>
+            <span class="caret">▾</span>
+          </button>
+          <ul id="modalMenu" class="type-menu" hidden>
+            <li data-modal="aereo" class="active">Aéreo</li>
+            <li data-modal="maritmo">Marítmo</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Formulário Aéreo -->
+      <form id="formAereo" class="form-tab active grid" autocomplete="off" novalidate>
+        <!-- Linha 1 -->
+        <div class="field">
+          <label class="label">Origem</label>
+          <input class="input" type="text">
+        </div>
+        <div class="field">
+          <label class="label">Número House</label>
+          <input class="input" type="text">
+        </div>
+
+        <!-- Linha 2 -->
+        <div class="field">
+          <label class="label">Destino</label>
+          <input class="input" type="text">
+        </div>
+        <div class="field">
+          <label class="label">Shipper</label>
+          <input class="input" type="text">
+        </div>
+
+        <!-- Linha 3 -->
+        <div class="field">
+          <label class="label">ETD</label>
+          <input class="input" type="text">
+        </div>
+        <div class="field">
+          <label class="label">Consignee</label>
+          <input class="input" type="text">
+        </div>
+
+        <!-- Linha 4 -->
+        <div class="field">
+          <label class="label">ETA</label>
+          <input class="input" type="text">
+        </div>
+        <div class="field">
+          <label class="label">Agente</label>
+          <input class="input" type="text">
+        </div>
+
+        <!-- Linha 5 -->
+        <div class="field">
+          <label class="label">Cia Aérea</label>
+          <input class="input" type="text">
+        </div>
+        <div class="field">
+          <label class="label">Ref Cliente</label>
+          <input class="input" type="text">
+        </div>
+
+        <!-- Linha 6 -->
+        <div class="field">
+          <label class="label">Número Master</label>
+          <input class="input" type="text">
+        </div>
+        <div class="field">
+          <label class="label">Incoterm</label>
+          <input class="input" type="text">
+        </div>
+
+        <!-- Botão -->
+        <div class="grid-full">
+          <button type="submit" class="btn btn-wide">Gerar Documento</button>
+        </div>
+      </form>
+
+      <!-- Formulário Marítmo -->
+      <form id="formMaritmo" class="form-tab grid" autocomplete="off" novalidate>
+        <!-- Linha 1 -->
+        <div class="field">
+          <label class="label">Origem</label>
+          <input class="input" type="text">
+        </div>
+        <div class="field">
+          <label class="label">Número House</label>
+          <input class="input" type="text">
+        </div>
+
+        <!-- Linha 2 -->
+        <div class="field">
+          <label class="label">Destino</label>
+          <input class="input" type="text">
+        </div>
+        <div class="field">
+          <label class="label">Shipper</label>
+          <input class="input" type="text">
+        </div>
+
+        <!-- Linha 3 -->
+        <div class="field">
+          <label class="label">ETD</label>
+          <input class="input" type="text">
+        </div>
+        <div class="field">
+          <label class="label">Consignee</label>
+          <input class="input" type="text">
+        </div>
+
+        <!-- Linha 4 -->
+        <div class="field">
+          <label class="label">ETA</label>
+          <input class="input" type="text">
+        </div>
+        <div class="field">
+          <label class="label">Agente</label>
+          <input class="input" type="text">
+        </div>
+
+        <!-- Linha 5 -->
+        <div class="field">
+          <label class="label">Armador</label>
+          <input class="input" type="text">
+        </div>
+        <div class="field">
+          <label class="label">Referência Cliente</label>
+          <input class="input" type="text">
+        </div>
+
+        <!-- Linha 6 -->
+        <div class="field">
+          <label class="label">Número Master</label>
+          <input class="input" type="text">
+        </div>
+        <div class="field">
+          <label class="label">Incoterm</label>
+          <input class="input" type="text">
+        </div>
+
+        <!-- Botão -->
+        <div class="grid-full">
+          <button type="submit" class="btn btn-wide">Gerar Documento</button>
+        </div>
+      </form>
+
+    </section>
+  </main>
+
+  <script src="assets/js/shipping.js"></script>
+</body>
+</html>

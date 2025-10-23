@@ -1,0 +1,163 @@
+:root{
+  --bg:#F5F5F5;
+  --form-bg:#F5F5F5;
+  --input-bg:#fff;
+  --input-bd:#cfd9d6;
+  --btn-bg:#2E4E45;
+  --btn-text:#fff;
+  --radius:4px;
+
+  --gap-x:24px;
+  --gap-y:16px;
+}
+
+/* ===== BODY ===== */
+body{
+  font-family: Arial, sans-serif;
+  background: var(--bg);
+  margin: 0;
+}
+
+/* ===== FORMULÁRIO ===== */
+.form-section{ padding:40px; position: relative; }
+.title{
+  text-align:center;
+  font-size:18px;
+  font-weight:700;
+  margin-bottom:20px;
+}
+
+/* Grid principal: 2 colunas */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  column-gap:var(--gap-x);
+  row-gap:var(--gap-y);
+  background:var(--form-bg);
+  padding:24px;
+  border-radius:8px;
+}
+.grid-full{ grid-column:1 / -1; }
+
+/* utilitários para forçar coluna */
+.col-1{ grid-column:1; }
+.col-2{ grid-column:2; }
+
+/* Campos padrão */
+.field{ display:flex; flex-direction:column; gap:4px; }
+.label{ font-size:12px; font-weight:500; }
+.input{
+  background:var(--input-bg);
+  border:1px solid var(--input-bd);
+  border-radius:var(--radius);
+  padding:6px 10px;
+  height:36px;
+}
+
+/* Grupo compacto p/ as duas datas dividirem UMA coluna */
+.field-group-compact{
+  display:grid;
+  grid-template-columns:1fr 1fr;  /* cada data ocupa metade */
+  gap:var(--gap-x);
+  align-items:end;
+}
+
+/* Dots (Routing/Carga) */
+.dot{ display:inline-flex; align-items:center; height:36px; cursor:pointer; }
+.dot input{ appearance:none; position:absolute; opacity:0; }
+.dot span{
+  width:16px; height:16px; border:2px solid #7ea59a; border-radius:50%;
+  display:inline-block; position:relative;
+}
+.dot input:checked + span::after{
+  content:""; position:absolute; inset:3px; background:#2E4E45; border-radius:50%;
+}
+
+/* Botão */
+.btn{
+  background:var(--btn-bg);
+  color:var(--btn-text);
+  border:0; border-radius:6px;
+  height:40px;
+  padding:0 16px;
+  font-size:13px; font-weight:700;
+  cursor:pointer;
+}
+.btn:hover{ opacity:.92; }
+
+/* Botão grande como no Figma */
+.btn-wide{
+  width:540px;
+  display:block;
+  margin: 40px auto 0;
+}
+
+/* ===== TABS FORMULÁRIOS ===== */
+.form-tab { display: none; }       /* Oculta formulários não ativos */
+.form-tab.active { display: grid; } /* Formulário ativo visível */
+
+/* Switch */
+.type-switch {
+  position: absolute;   /* agora fica no canto da página */
+  top: 40px;            /* distância do topo */
+  right: 80px;          /* distância da margem direita */
+  z-index: 11;          /* acima do header e das lanes */
+  justify-self: end;    /* mantém alinhamento interno se necessário */
+}
+
+.type-btn {
+  height: 34px;
+  min-width: 160px;
+  padding: 0 14px;
+  border: 1px solid #4E7367;
+  border-radius: 18px;
+  background: #F5F5F5;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.type-menu {
+  position: absolute;
+  right: 0;
+  top: 40px;           /* mantém dropdown alinhado abaixo do botão */
+  width: 160px;
+  list-style: none;
+  margin: 0;
+  padding: 6px 0;
+  background: #F5F5F5;
+  border: 1px solid #4E7367;
+  border-radius: 10px;
+  box-shadow: 0 6px 16px rgba(0,0,0,.08);
+  z-index: 999;
+}
+
+.type-menu li {
+  padding: 8px 12px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.type-menu li:hover {
+  background: #EEF5F3;
+}
+
+.type-menu li.active {
+  font-weight: 700;
+}
+
+
+/* ===== RESPONSIVO ===== */
+@media (max-width:1060px){
+  .grid{ grid-template-columns:1fr 1fr; }
+  .col-1,.col-2{ grid-column:auto; }
+  .field-group-compact{ grid-template-columns:1fr 1fr; }
+  .btn-wide{ width:100%; }
+}
+@media (max-width:640px){
+  .grid{ grid-template-columns:1fr; }
+  .btn-wide{ width:100%; }
+}

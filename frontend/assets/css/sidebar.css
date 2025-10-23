@@ -1,0 +1,117 @@
+/* ===== Sidebar padrão (usar em TODAS as páginas) ===== */
+:root{
+  --sidebar-bg:    #3C6B61;   /* verde base */
+  --logo-bg:       #8B8A8A;   /* bloco do logo */
+
+  --sidebar-w: 84px;              /* largura colapsada */
+  --sidebar-w-expanded: 240px;    /* largura expandida no hover */
+
+  --icon-size: 22px;
+  --row-h: 48px;
+
+  --active-bg: #1F4F46;           /* faixa escura do ativo */
+  --active-color: #EAF6F2;
+}
+
+/* fixa na lateral esquerda */
+.sidebar{
+  position: fixed;
+  inset: 0 auto 0 0;
+  width: var(--sidebar-w);
+  background: var(--sidebar-bg);
+  display: flex;
+  flex-direction: column;
+  z-index: 10;
+  transition: width .2s ease;
+  overflow: visible;
+}
+.sidebar:hover{ width: var(--sidebar-w-expanded); }
+
+/* bloco do LOGO */
+.logo-block{
+  height: 84px;
+  background: var(--logo-bg);
+  color: #111;
+  display: grid;
+  place-items: center;
+  font-weight: 600;
+  letter-spacing: .2px;
+  font-size: 12px;
+}
+
+/* lista de itens */
+.menu{
+  flex: 1;
+  display: grid;
+  align-content: start;
+  gap: 8px;
+  padding: 12px 0;
+}
+
+/* item base: todos do mesmo tamanho */
+.menu-item,
+.menu-exit{
+  height: var(--row-h);            /* 🔹 altura fixa */
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+  padding: 0 16px;                 /* 🔹 padding igual */
+  border-radius: 8px;
+  color: #E9F5F2;
+  text-decoration: none;
+  font-size: 14px;
+  transition: background .2s, box-shadow .2s;
+}
+
+/* ícones */
+.menu-item img,
+.menu-exit img{
+  width: var(--icon-size);
+  height: var(--icon-size);
+  display: block;
+  object-fit: contain;
+}
+
+/* “Sair” colado embaixo */
+.menu-exit{ margin-top: auto; padding-bottom: 12px; }
+
+/* rótulos aparecem só no expandido */
+.menu-label{
+  white-space: nowrap;
+  overflow: hidden;
+  opacity: 0;
+  width: 0;
+  transform: translateX(-6px);
+  transition: opacity .15s ease, transform .15s ease, width .15s ease;
+  color: #E9F5F2;
+  font-size: 13px;
+}
+.sidebar:hover .menu-label{
+  opacity: 1;
+  width: auto;
+  transform: translateX(0);
+}
+
+/* ativo: faixa escura inteira */
+.menu-item.is-active{
+  background: var(--active-bg);
+  box-shadow: none;
+}
+.sidebar:hover .menu-item.is-active .menu-label{
+  color: var(--active-color);
+}
+
+/* remove focos do navegador */
+.menu-item:focus,
+.menu-item:focus-visible,
+.menu-item:active,
+.menu-exit:focus,
+.menu-exit:focus-visible{
+  outline: none !important;
+  box-shadow: none !important;
+  background-image: none !important;
+}
+
+/* conteúdo após sidebar */
+.page-with-sidebar{ margin-left: var(--sidebar-w); }

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Quadro Processos</title>
+
+  <link rel="stylesheet" href="assets/css/reset.css">
+  <link rel="stylesheet" href="assets/css/sidebar.css">
+  <link rel="stylesheet" href="assets/css/board.css">
+</head>
+<body>
+  <!-- Sidebar (igual às telas anteriores) -->
+  <aside class="sidebar">
+    <div class="logo-block">LOGO</div>
+    <nav class="menu">
+      <a href="profile.html"   class="menu-item"><img src="assets/img/icons/usuario.svg" alt=""><span class="menu-label">Informações pessoais</span></a>
+      <a href="shipping.html"  class="menu-item"><img src="assets/img/icons/caminhao.svg" alt=""><span class="menu-label">Shipping</span></a>
+      <a href="forms.html"     class="menu-item"><img src="assets/img/icons/documento.svg" alt=""><span class="menu-label">Formulário processos</span></a>
+      <a href="board.html"     class="menu-item is-active"><img src="assets/img/icons/tetris.svg" alt=""><span class="menu-label">Quadro processos</span></a>
+      <a href="#" class="menu-item"><img src="assets/img/icons/pasta.svg" alt=""><span class="menu-label">Repositório</span></a>
+      <a href="#" class="menu-item"><img src="assets/img/icons/caixa.svg" alt=""><span class="menu-label">Rastreamento</span></a>
+      <a href="#" class="menu-item"><img src="assets/img/icons/cadeado.svg" alt=""><span class="menu-label">Acesso</span></a>
+      <a href="#" class="menu-item"><img src="assets/img/icons/comentario.svg" alt=""><span class="menu-label">Chat</span></a>
+      <a href="#" class="menu-exit"><img src="assets/img/icons/sair.svg" alt=""><span class="menu-label">Sair</span></a>
+    </nav>
+  </aside>
+
+  <main class="page-with-sidebar">
+    <header class="board-header">
+      <h1>QUADRO PROCESSOS</h1>
+
+      <div class="search-wrap">
+        <span class="loupe" aria-hidden="true">🔍</span>
+        <input id="search" class="search-input" type="search" placeholder="Pesquisar">
+      </div>
+
+      <div class="type-switch">
+        <button id="typeBtn" class="type-btn"><span id="typeLabel">Importação</span><span class="caret">▾</span></button>
+        <ul id="typeMenu" class="type-menu" hidden>
+          <li data-type="importacao" class="active">Importação</li>
+          <li data-type="exportacao">Exportação</li>
+        </ul>
+      </div>
+    </header>
+
+    <section class="board-area">
+      <div class="lane" data-lane="maritima">
+        <div class="lane-head">
+          <h2 id="lane1Title">Importação Marítima</h2>
+          <button class="lane-add" data-add="maritima" title="Adicionar card">＋</button>
+        </div>
+        <div class="lane-cards" id="laneMaritima"></div>
+      </div>
+
+      <div class="lane" data-lane="aerea">
+        <div class="lane-head">
+          <h2 id="lane2Title">Importação Aérea</h2>
+          <button class="lane-add" data-add="aerea" title="Adicionar card">＋</button>
+        </div>
+        <div class="lane-cards" id="laneAerea"></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- POPOVER (compacto, sem overlay), centralizado na coluna -->
+  <div id="cardPopover" class="popover" hidden>
+    <div class="pop-box" role="dialog" aria-modal="false" aria-labelledby="popTitle">
+      <div class="pop-head">
+        <strong id="popTitle">INA_01 - Importação Geladeira</strong>
+        <div class="pop-actions">
+          <!-- Inspecionar -->
+          <button type="button" class="icon-btn" id="pInspect" title="Inspecionar" aria-label="Inspecionar">
+            <svg width="16" height="16" viewBox="0 0 24 24"><path d="M10 17a7 7 0 100-14 7 7 0 000 14zm11 4l-6-6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          </button>
+          <!-- Adicionar -->
+          <button type="button" class="icon-btn" id="pAdd" title="Adicionar" aria-label="Adicionar">
+            <svg width="16" height="16" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          </button>
+          <!-- Fechar -->
+          <button type="button" class="icon-btn" id="pClose" title="Fechar" aria-label="Fechar">
+            <svg width="16" height="16" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="meta-row">
+        <div class="field">
+          <label class="label">Data de início</label>
+          <div class="date-inside">
+            <input id="pStart" class="input sm" type="text" placeholder="dd/mm/aaaa">
+            <span class="date-square" aria-hidden="true"></span>
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Data de conclusão</label>
+          <div class="date-inside">
+            <input id="pEnd" class="input sm" type="text" placeholder="dd/mm/aaaa">
+            <span class="date-square" aria-hidden="true"></span>
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Status</label>
+          <select id="pStatus" class="input sm">
+            <option>Em andamento</option>
+            <option>Concluído</option>
+            <option>Cancelado</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="pChecklist" class="checklist"></div>
+
+      <div class="field obs">
+        <label class="label">Observação</label>
+        <input id="pObs" class="input" type="text">
+      </div>
+
+      <div class="docs-row">
+        <div class="docs-left">
+          <svg width="16" height="16" viewBox="0 0 24 24"><path d="M8 12l6-6a4 4 0 115.6 5.6l-8.5 8.5a6 6 0 11-8.5-8.5l8-8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          <span class="docs-txt">Documentos</span>
+        </div>
+        <div class="docs-right">
+          <svg width="16" height="16" viewBox="0 0 24 24"><path d="M21 15a7 7 0 10-3 5l4 1-1-4z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24"><path d="M7 3h8l4 4v14H7zM15 3v4h4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <button class="kebab" id="docsMenuBtn" aria-label="Mais opções">⋯</button>
+          <ul class="menu small" id="docsMenu" hidden>
+            <li id="mDelete">Excluir card</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/board.js"></script>
+</body>
+</html>

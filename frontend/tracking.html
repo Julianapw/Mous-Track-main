@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Rastreamento</title>
+
+  <!-- estilos base e da sidebar (os mesmos que já usamos) -->
+  <link rel="stylesheet" href="assets/css/reset.css">
+  <link rel="stylesheet" href="assets/css/sidebar.css">
+  <!-- estilo desta tela -->
+  <link rel="stylesheet" href="assets/css/tracking.css">
+</head>
+<body>
+  <!-- Sidebar padrão -->
+  <aside class="sidebar">
+    <div class="logo-block">LOGO</div>
+    <nav class="menu">
+      <a href="profile.html"    class="menu-item"><img src="assets/img/icons/usuario.svg" alt=""><span class="menu-label">Informações pessoais</span></a>
+      <a href="shipping.html"   class="menu-item"><img src="assets/img/icons/caminhao.svg" alt=""><span class="menu-label">Shipping</span></a>
+      <a href="forms.html"      class="menu-item"><img src="assets/img/icons/documento.svg" alt=""><span class="menu-label">Formulário processos</span></a>
+      <a href="board.html"      class="menu-item"><img src="assets/img/icons/tetris.svg" alt=""><span class="menu-label">Quadro processos</span></a>
+      <a href="repository.html" class="menu-item"><img src="assets/img/icons/pasta.svg" alt=""><span class="menu-label">Repositório</span></a>
+      <a href="tracking.html"   class="menu-item is-active"><img src="assets/img/icons/caixa.svg" alt=""><span class="menu-label">Rastreamento</span></a>
+      <a href="#"               class="menu-item"><img src="assets/img/icons/cadeado.svg" alt=""><span class="menu-label">Acesso</span></a>
+      <a href="#"               class="menu-item"><img src="assets/img/icons/comentario.svg" alt=""><span class="menu-label">Chat</span></a>
+      <a href="#"               class="menu-exit"><img src="assets/img/icons/sair.svg" alt=""><span class="menu-label">Sair</span></a>
+    </nav>
+  </aside>
+
+  <main class="page-with-sidebar">
+    <header class="trk-header">
+      <h1>RASTREIO</h1>
+      <p class="hint">Insira o AWB (aéreo) ou Container / BL / Booking (marítimo)</p>
+
+      <form id="trkForm" class="search-line" role="search" autocomplete="off">
+        <input id="trkInput" class="trk-input" type="search" placeholder="Value" aria-label="Código de rastreio">
+        <button class="trk-btn" type="submit">Buscar</button>
+      </form>
+
+      <div id="trkFeedback" class="trk-feedback" aria-live="polite"></div>
+    </header>
+
+    <section class="trk-body">
+      <!-- Linha do tempo -->
+      <div class="timeline" aria-label="Linha do tempo do rastreio">
+        <div class="timeline__dates" id="tlDates">
+          <!-- datas por passo (preenchidas via JS) -->
+        </div>
+
+        <div class="timeline__bar">
+          <div class="timeline__bar-fill" id="tlFill"></div>
+        </div>
+
+        <ol class="timeline__steps" id="tlSteps">
+          <!-- passos (labels e cidades; preenchidos e atualizados via JS) -->
+        </ol>
+      </div>
+    </section>
+  </main>
+
+  <script src="assets/js/tracking.js"></script>
+</body>
+</html>

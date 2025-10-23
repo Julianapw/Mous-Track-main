@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Informações Pessoais</title>
+  <link rel="stylesheet" href="assets/css/reset.css">
+  <link rel="stylesheet" href="assets/css/sidebar.css"><!-- sidebar compartilhada -->
+  <link rel="stylesheet" href="assets/css/profile.css">
+</head>
+<body data-page="profile">
+  <!-- SIDEBAR PADRÃO (mesma ordem em todo o site) -->
+    <aside class="sidebar">
+        <div class="logo-block">LOGO</div>
+
+        <nav class="menu">
+            <a class="menu-item" data-key="profile"   href="profile.html">
+            <img src="assets/img/icons/usuario.svg" alt=""><span class="menu-label">Informações pessoais</span>
+            </a>
+            <a class="menu-item is-active" data-key="shipping" href="shipping.html">
+            <img src="assets/img/icons/caminhao.svg" alt=""><span class="menu-label">Shipping</span>
+            </a>
+            <a class="menu-item" data-key="forms"     href="#">
+            <img src="assets/img/icons/documento.svg" alt=""><span class="menu-label">Formulário processos</span>
+            </a>
+            <a class="menu-item" data-key="costs"     href="#">
+            <img src="assets/img/icons/tetris.svg" alt=""><span class="menu-label">Quadro processos</span>
+            </a>
+            <a class="menu-item" data-key="repo"      href="#">
+            <img src="assets/img/icons/pasta.svg" alt=""><span class="menu-label">Repositório</span>
+            </a>
+            <a class="menu-item" data-key="tracking"  href="#">
+            <img src="assets/img/icons/caixa.svg" alt=""><span class="menu-label">Rastreamento</span>
+            </a>
+            <a class="menu-item" data-key="access"    href="#">
+            <img src="assets/img/icons/cadeado.svg" alt=""><span class="menu-label">Acesso</span>
+            </a>
+            <a class="menu-item" data-key="chat"      href="#">
+            <img src="assets/img/icons/comentario.svg" alt=""><span class="menu-label">Chat</span>
+            </a>
+        </nav>
+
+        <a class="menu-exit" href="#">
+            <img src="assets/img/icons/sair.svg" alt=""><span class="menu-label">Sair</span>
+        </a>
+    </aside>
+
+  <main class="content page-with-sidebar">
+    <h1 class="title">INFORMAÇÕES PESSOAIS</h1>
+
+    <section class="avatar">
+      <svg class="avatar-icon" width="72" height="72" viewBox="0 0 72 72" aria-hidden="true">
+        <circle cx="36" cy="36" r="34" fill="#1F4F46" />
+        <circle cx="36" cy="30" r="10" fill="none" stroke="#E6F0EE" stroke-width="3" />
+        <path d="M18 56c5-9 13-12 18-12s13 3 18 12" fill="none" stroke="#E6F0EE" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+      <button type="button" class="avatar-link" id="btnAlterarImagem">Alterar imagem</button>
+    </section>
+
+    <form id="perfilForm" class="form" autocomplete="off" novalidate>
+      <label for="telefone" class="label">Telefone</label>
+      <input id="telefone" name="telefone" type="tel" placeholder="Value" class="input">
+
+      <label for="senha" class="label">Senha</label>
+      <input id="senha" name="senha" type="password" placeholder="Value" class="input">
+
+      <label for="confirmar" class="label">Confirmar senha</label>
+      <input id="confirmar" name="confirmar" type="password" placeholder="Value" class="input">
+
+      <button type="submit" class="btn">Salvar</button>
+    </form>
+  </main>
+
+  <script src="assets/js/nav.js" defer></script>
+  <script src="assets/js/profile.js"></script>
+</body>
+</html>
