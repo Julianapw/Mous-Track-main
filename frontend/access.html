@@ -13,8 +13,10 @@
 </head>
 <body>
   <!-- Sidebar padrão -->
-  <aside class="sidebar">
-    <div class="logo-block">LOGO</div>
+<div class="page-with-sidebar">
+  <aside id="sidebar" class="sidebar">
+    <img src="assets/img/icons/logomenu.png" alt="Logo" class="logo-img">
+
     <nav class="menu">
       <a href="profile.html"     class="menu-item"><img src="assets/img/icons/usuario.svg" alt=""><span class="menu-label">Informações pessoais</span></a>
       <a href="shipping.html"    class="menu-item"><img src="assets/img/icons/caminhao.svg" alt=""><span class="menu-label">Shipping</span></a>
@@ -76,5 +78,42 @@
   </main>
 
   <script src="assets/js/access.js"></script>
+
+  <!-- Script que carrega o menu.html ao passar o mouse -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const sidebar = document.getElementById("sidebar");
+
+      sidebar.addEventListener("mouseenter", async () => {
+        if (!sidebar.classList.contains("expanded")) {
+          try {
+            const resp = await fetch("menu.html");
+            const html = await resp.text();
+            sidebar.innerHTML = html;
+            sidebar.classList.add("expanded");
+          } catch (err) {
+            console.error("Erro ao carregar menu.html:", err);
+          }
+        }
+      });
+
+      sidebar.addEventListener("mouseleave", () => {
+        sidebar.classList.remove("expanded");
+        sidebar.innerHTML = `
+          <img src="assets/img/icons/logomenu.png" alt="Logo" class="logo-img">
+          <nav class="menu">
+            <a href="profile.html" class="menu-item"><img src="assets/img/icons/usuario.svg" alt=""></a>
+            <a href="shipping.html" class="menu-item"><img src="assets/img/icons/caminhao.svg" alt=""></a>
+            <a href="forms.html" class="menu-item"><img src="assets/img/icons/documento.svg" alt=""></a>
+            <a href="board.html" class="menu-item"><img src="assets/img/icons/tetris.svg" alt=""></a>
+            <a href="repository.html" class="menu-item"><img src="assets/img/icons/pasta.svg" alt=""></a>
+            <a href="tracking.html" class="menu-item"><img src="assets/img/icons/caixa.svg" alt=""></a>
+            <a href="access.html" class="menu-item is-active"><img src="assets/img/icons/cadeado.svg" alt=""></a>
+            <a href="chat.html" class="menu-item"><img src="assets/img/icons/comentario.svg" alt=""></a>
+            <a href="#" class="menu-exit"><img src="assets/img/icons/sair.svg" alt=""></a>
+          </nav>`;
+      });
+    });
+  </script>
 </body>
 </html>

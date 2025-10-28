@@ -51,16 +51,32 @@ modalItems.forEach(item => {
 // Envio mínimo dos formulários
 // ====================
 [formAereo, formMaritmo].forEach(form => {
-  form.addEventListener('submit', (e) => {
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    // Exemplo de envio futuro:
-    // const data = Object.fromEntries(new FormData(form).entries());
-    // fetch('/api/shipping', {
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify(data)
-    // }).then(r => r.ok ? alert('Documento gerado!') : alert('Erro ao gerar.'));
 
-    alert(`Formulário ${form.id} enviado!`);
+    const data = Object.fromEntries(new FormData(form).entries());
+    data.tipo = form.id === 'formAereo' ? 'aereo' : 'maritmo';
+
+    try {
+      const response = await fetch('http://localhost:8088/api/shipping/pdf', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+
+      if (!response.ok) throw new Error('Erro ao gerar PDF');
+
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `Shipping_${data.tipo}.pdf`;
+      a.click();
+      window.URL.revokeObjectURL(url);
+
+    } catch (err) {
+      alert('❌ Falha ao gerar documento.');
+      console.error(err);
+    }
   });
 });

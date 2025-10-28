@@ -1,6 +1,8 @@
+C:\Mous-Track-main\backend-spring\src\main\java\com\comexapp\DTO\ShippingInstructionDTO.java
 C:\Mous-Track-main\backend-spring\src\main\java\com\comexapp\Application.java
 C:\Mous-Track-main\backend-spring\src\main\java\com\comexapp\model\Usuario.java
 C:\Mous-Track-main\backend-spring\src\main\java\com\comexapp\controller\AuthController.java
+C:\Mous-Track-main\backend-spring\src\main\java\com\comexapp\controller\ShippingController.java
 C:\Mous-Track-main\backend-spring\src\main\java\com\comexapp\model\TipoUsuario.java
 C:\Mous-Track-main\backend-spring\src\main\java\com\comexapp\service\UsuarioService.java
 C:\Mous-Track-main\backend-spring\src\main\java\com\comexapp\controller\TesteController.java
@@ -13,3 +15,4 @@ C:\Mous-Track-main\backend-spring\src\main\java\com\comexapp\repository\UsuarioR
 C:\Mous-Track-main\backend-spring\src\main\java\com\comexapp\controller\ProcessController.java
 C:\Mous-Track-main\backend-spring\src\main\java\com\comexapp\model\Cliente.java
 C:\Mous-Track-main\backend-spring\src\main\java\com\comexapp\DTO\AtualizarPerfilDTO.java
+C:\Mous-Track-main\backend-spring\src\main\java\com\comexapp\service\ShippingPdfService.java

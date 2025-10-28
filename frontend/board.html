@@ -10,22 +10,23 @@
   <link rel="stylesheet" href="assets/css/board.css">
 </head>
 <body>
-  <!-- Sidebar (igual às telas anteriores) -->
-  <aside class="sidebar">
-    <div class="logo-block">LOGO</div>
+  <!-- Sidebar (menu será carregado dinamicamente) -->
+  <aside id="sidebar" class="sidebar">
+    <img src="assets/img/icons/logomenu.png" alt="Logo" class="logo-img">
     <nav class="menu">
-      <a href="profile.html"   class="menu-item"><img src="assets/img/icons/usuario.svg" alt=""><span class="menu-label">Informações pessoais</span></a>
-      <a href="shipping.html"  class="menu-item"><img src="assets/img/icons/caminhao.svg" alt=""><span class="menu-label">Shipping</span></a>
-      <a href="forms.html"     class="menu-item"><img src="assets/img/icons/documento.svg" alt=""><span class="menu-label">Formulário processos</span></a>
-      <a href="board.html"     class="menu-item is-active"><img src="assets/img/icons/tetris.svg" alt=""><span class="menu-label">Quadro processos</span></a>
-      <a href="#" class="menu-item"><img src="assets/img/icons/pasta.svg" alt=""><span class="menu-label">Repositório</span></a>
-      <a href="#" class="menu-item"><img src="assets/img/icons/caixa.svg" alt=""><span class="menu-label">Rastreamento</span></a>
-      <a href="#" class="menu-item"><img src="assets/img/icons/cadeado.svg" alt=""><span class="menu-label">Acesso</span></a>
-      <a href="#" class="menu-item"><img src="assets/img/icons/comentario.svg" alt=""><span class="menu-label">Chat</span></a>
-      <a href="#" class="menu-exit"><img src="assets/img/icons/sair.svg" alt=""><span class="menu-label">Sair</span></a>
+      <a href="profile.html" class="menu-item"><img src="assets/img/icons/usuario.svg" alt=""></a>
+      <a href="shipping.html" class="menu-item"><img src="assets/img/icons/caminhao.svg" alt=""></a>
+      <a href="forms.html" class="menu-item"><img src="assets/img/icons/documento.svg" alt=""></a>
+      <a href="board.html" class="menu-item is-active"><img src="assets/img/icons/tetris.svg" alt=""></a>
+      <a href="repository.html" class="menu-item"><img src="assets/img/icons/pasta.svg" alt=""></a>
+      <a href="tracking.html" class="menu-item"><img src="assets/img/icons/caixa.svg" alt=""></a>
+      <a href="access.html" class="menu-item"><img src="assets/img/icons/cadeado.svg" alt=""></a>
+      <a href="chat.html" class="menu-item"><img src="assets/img/icons/comentario.svg" alt=""></a>
+      <a href="#" class="menu-exit"><img src="assets/img/icons/sair.svg" alt=""></a>
     </nav>
   </aside>
 
+  <!-- Conteúdo principal -->
   <main class="page-with-sidebar">
     <header class="board-header">
       <h1>QUADRO PROCESSOS</h1>
@@ -63,21 +64,18 @@
     </section>
   </main>
 
-  <!-- POPOVER (compacto, sem overlay), centralizado na coluna -->
+  <!-- Popover -->
   <div id="cardPopover" class="popover" hidden>
     <div class="pop-box" role="dialog" aria-modal="false" aria-labelledby="popTitle">
       <div class="pop-head">
         <strong id="popTitle">INA_01 - Importação Geladeira</strong>
         <div class="pop-actions">
-          <!-- Inspecionar -->
           <button type="button" class="icon-btn" id="pInspect" title="Inspecionar" aria-label="Inspecionar">
             <svg width="16" height="16" viewBox="0 0 24 24"><path d="M10 17a7 7 0 100-14 7 7 0 000 14zm11 4l-6-6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
           </button>
-          <!-- Adicionar -->
           <button type="button" class="icon-btn" id="pAdd" title="Adicionar" aria-label="Adicionar">
             <svg width="16" height="16" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
           </button>
-          <!-- Fechar -->
           <button type="button" class="icon-btn" id="pClose" title="Fechar" aria-label="Fechar">
             <svg width="16" height="16" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
           </button>
@@ -134,5 +132,42 @@
   </div>
 
   <script src="assets/js/board.js"></script>
+
+  <!-- Script para carregar o menu -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const sidebar = document.getElementById("sidebar");
+
+      sidebar.addEventListener("mouseenter", async () => {
+        if (!sidebar.classList.contains("expanded")) {
+          try {
+            const resp = await fetch("menu.html");
+            const html = await resp.text();
+            sidebar.innerHTML = html;
+            sidebar.classList.add("expanded");
+          } catch (err) {
+            console.error("Erro ao carregar menu.html:", err);
+          }
+        }
+      });
+
+      sidebar.addEventListener("mouseleave", () => {
+        sidebar.classList.remove("expanded");
+        sidebar.innerHTML = `
+          <img src="assets/img/icons/logomenu.png" alt="Logo" class="logo-img">
+          <nav class="menu">
+            <a href="profile.html" class="menu-item"><img src="assets/img/icons/usuario.svg" alt=""></a>
+            <a href="shipping.html" class="menu-item"><img src="assets/img/icons/caminhao.svg" alt=""></a>
+            <a href="forms.html" class="menu-item"><img src="assets/img/icons/documento.svg" alt=""></a>
+            <a href="board.html" class="menu-item is-active"><img src="assets/img/icons/tetris.svg" alt=""></a>
+            <a href="repository.html" class="menu-item"><img src="assets/img/icons/pasta.svg" alt=""></a>
+            <a href="tracking.html" class="menu-item"><img src="assets/img/icons/caixa.svg" alt=""></a>
+            <a href="access.html" class="menu-item"><img src="assets/img/icons/cadeado.svg" alt=""></a>
+            <a href="chat.html" class="menu-item"><img src="assets/img/icons/comentario.svg" alt=""></a>
+            <a href="#" class="menu-exit"><img src="assets/img/icons/sair.svg" alt=""></a>
+          </nav>`;
+      });
+    });
+  </script>
 </body>
 </html>

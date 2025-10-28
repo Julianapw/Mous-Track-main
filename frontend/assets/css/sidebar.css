@@ -1,7 +1,7 @@
 /* ===== Sidebar padrão (usar em TODAS as páginas) ===== */
 :root{
-  --sidebar-bg:    #3C6B61;   /* verde base */
-  --logo-bg:       #8B8A8A;   /* bloco do logo */
+  --sidebar-bg:    #4E7367;   /* verde base */
+  
 
   --sidebar-w: 84px;              /* largura colapsada */
   --sidebar-w-expanded: 240px;    /* largura expandida no hover */
@@ -27,17 +27,7 @@
 }
 .sidebar:hover{ width: var(--sidebar-w-expanded); }
 
-/* bloco do LOGO */
-.logo-block{
-  height: 84px;
-  background: var(--logo-bg);
-  color: #111;
-  display: grid;
-  place-items: center;
-  font-weight: 600;
-  letter-spacing: .2px;
-  font-size: 12px;
-}
+
 
 /* lista de itens */
 .menu{

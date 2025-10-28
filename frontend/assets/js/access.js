@@ -1,3 +1,44 @@
+// ======================
+//  SIDEBAR DINÂMICA
+// ======================
+document.addEventListener("DOMContentLoaded", () => {
+  const sidebar = document.querySelector(".sidebar");
+
+  sidebar.addEventListener("mouseenter", async () => {
+    if (!sidebar.classList.contains("expanded")) {
+      try {
+        const resp = await fetch("menu.html");
+        const html = await resp.text();
+        sidebar.innerHTML = html;
+        sidebar.classList.add("expanded");
+      } catch (err) {
+        console.error("Erro ao carregar menu.html:", err);
+      }
+    }
+  });
+
+  sidebar.addEventListener("mouseleave", () => {
+    sidebar.classList.remove("expanded");
+    sidebar.innerHTML = `
+      <div class="logo-block">LOGO</div>
+      <nav class="menu">
+        <a href="profile.html" class="menu-item"><img src="assets/img/icons/usuario.svg" alt=""></a>
+        <a href="shipping.html" class="menu-item"><img src="assets/img/icons/caminhao.svg" alt=""></a>
+        <a href="forms.html" class="menu-item"><img src="assets/img/icons/documento.svg" alt=""></a>
+        <a href="board.html" class="menu-item"><img src="assets/img/icons/tetris.svg" alt=""></a>
+        <a href="repository.html" class="menu-item"><img src="assets/img/icons/pasta.svg" alt=""></a>
+        <a href="tracking.html" class="menu-item"><img src="assets/img/icons/caixa.svg" alt=""></a>
+        <a href="access.html" class="menu-item is-active"><img src="assets/img/icons/cadeado.svg" alt=""></a>
+        <a href="chat.html" class="menu-item"><img src="assets/img/icons/comentario.svg" alt=""></a>
+        <a href="#" class="menu-exit"><img src="assets/img/icons/sair.svg" alt=""></a>
+      </nav>`;
+  });
+});
+
+// ======================
+//  LÓGICA DA PÁGINA DE ACESSO
+// ======================
+
 // Seleciona elementos do DOM
 const form = document.getElementById('accForm');
 const nameEl = document.getElementById('accName');
@@ -43,11 +84,10 @@ async function carregarClientes() {
     if (!resp.ok) throw new Error('Falha ao obter clientes');
     const clientes = await resp.json();
 
-    // Atualiza o select com id e nome
     cliSel.innerHTML = '<option value="">Selecione</option>';
     clientes.forEach(c => {
       const opt = document.createElement('option');
-      opt.value = c.id; // 👈 agora o value é o ID
+      opt.value = c.id;
       opt.textContent = c.nome;
       cliSel.appendChild(opt);
     });
@@ -68,7 +108,7 @@ form.addEventListener('submit', async (e) => {
   const nome = nameEl.value.trim();
   const email = emailEl.value.trim();
   const senha = passEl.value.trim();
-  const clienteId = cliSel.value; // 👈 pega o ID, não o nome
+  const clienteId = cliSel.value;
 
   if (!nome || !email || !senha || !clienteId) {
     setFeedback('Preencha todos os campos.', true);
@@ -92,9 +132,9 @@ form.addEventListener('submit', async (e) => {
       body: JSON.stringify({
         nome,
         email,
-        senhaHash: senha,            // ✅ nome correto conforme backend
-        clienteId: Number(clienteId), // ✅ backend espera clienteId
-        tipoUsuario: 'colaborador'    // ✅ nome correto
+        senhaHash: senha,
+        clienteId: Number(clienteId),
+        tipoUsuario: 'colaborador'
       })
     });
 
@@ -102,8 +142,6 @@ form.addEventListener('submit', async (e) => {
 
     setFeedback('Usuário cadastrado com sucesso!');
     form.reset();
-
-    // feedback desaparece após alguns segundos
     setTimeout(() => setFeedback(''), 4000);
 
   } catch (err) {
@@ -113,5 +151,9 @@ form.addEventListener('submit', async (e) => {
     submitBtn.disabled = false;
   }
 });
+
+// ⚙️ TODO: implementar lógica do campo de processo
+// (para definir se o usuário tem acesso a exportação, importação ou ambos)
+
 
 //FAZER A LOGICA DO CAMPO DE PROCESSO, P SABER SE O USUARIO TEM ACESSO P EXPORTAÇÃO, IMPORTAÇÃO OU AMBOS, MAS SO DA P FAZER DEPOIS QUE A LOGICA DO PROCESSO ESTIVER FEITA
